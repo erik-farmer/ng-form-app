@@ -4,7 +4,7 @@
       <div class="col-md-10">
         <div class="form-group" ng-class="{'has-error': form.uName.$error.required && (form.$submitted || form.uName.$touched)}">
           <label for="uName">Full Name</label>
-          <input type="text" class="form-control" ng-model="user.name" name="uName" required="" />
+          <input id="uName" type="text" class="form-control" ng-model="user.name" name="uName" required="" />
           <div ng-show="form.$submitted || form.uName.$touched">
             <p class="text-danger" ng-show="form.uName.$error.required">Please enter your full name.</p>
           </div><!-- errors-msg -->
@@ -17,7 +17,7 @@
         <div class="form-group" ng-class="{'has-error': (form.uEmail.$error.required || form.uEmail.$error.email) &&
                                           (form.$submitted || form.uEmail.$touched)}">
           <label for="uEmail">Email address</label>
-          <input type="email" class="form-control" ng-model="user.email" name="uEmail" required="" />
+          <input id="uEmail" type="email" class="form-control" ng-model="user.email" name="uEmail" required="" />
           <div ng-show="form.$submitted || form.uEmail.$touched">
             <p class="text-danger" ng-show="form.uEmail.$error.required">Please enter an email.</p>
             <p class="text-danger" ng-show="form.uEmail.$error.email">The email you have entered is not of a valid format.</p>
@@ -27,8 +27,8 @@
     </div><!-- row -->
     <div class="row">
       <div class="col-md-10">
-        <label for="uDegree">Select with static</label>
-        <select name="uDegree" id="pets" class="form-control"
+        <label for="uPets">Select with static</label>
+        <select name="uPets" id="uPets" class="form-control"
                 ng-options="p.name as p.name for p in pets"
                 ng-model="user.pet" required>
           <option value="">Select a Pet</option>
