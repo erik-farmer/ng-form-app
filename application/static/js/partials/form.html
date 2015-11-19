@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <form name="form" novalidate>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-group" ng-class="{'has-error': form.uName.$error.required && (form.$submitted || form.uName.$touched)}">
+          <label for="uName">Full Name</label>
+          <input type="text" class="form-control" ng-model="user.name" name="uName" required="" />
+          <div ng-show="form.$submitted || form.uName.$touched">
+            <p class="text-danger" ng-show="form.uName.$error.required">Please enter your full name.</p>
+          </div><!-- errors-msg -->
+        </div><!-- form-group -->
+      </div><!-- col -->
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="col-md-10">
+        <div class="form-group" ng-class="{'has-error': (form.uEmail.$error.required || form.uEmail.$error.email) &&
+                                          (form.$submitted || form.uEmail.$touched)}">
+          <label for="uEmail">Email address</label>
+          <input type="email" class="form-control" ng-model="user.email" name="uEmail" required="" />
+          <div ng-show="form.$submitted || form.uEmail.$touched">
+            <p class="text-danger" ng-show="form.uEmail.$error.required">Please enter an email.</p>
+            <p class="text-danger" ng-show="form.uEmail.$error.email">The email you have entered is not of a valid format.</p>
+          </div><!-- error-msg -->
+        </div><!-- form-group -->
+      </div><!-- col -->
+    </div><!-- row -->
+    <div class="row">
+      <div class="col-md-10">
+        <label for="uDegree">Select with static</label>
+        <select name="uDegree" id="pets" class="form-control" ng-options="p.name as p.name for p in pets"
+                                                          ng-model="user.pet" required>
+          <option value="">Select a Pet</option>
+        </select>
+        <div ng-show="form.$submitted || form.uDegree.$touched">
+          <p class="text-danger" ng-show="form.uDegree.$error.required">Please enter favorite pet type.</p>
+        </div><!-- error-msg -->
+      </div><!-- col -->
+    </div><!-- row -->
+    <div class="row">
+      <div class="col-md-10">
+        <tag-manager tags="tags" options="colors"></tag-manager>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <double-tag-manager tags="tags_2"
+                            primary="primaryFoods"
+                            secondary="secondaryFoods"
+                            user-primary="userCategory"
+                            user-secondary="userFood">
+        </double-tag-manager>
+      </div>
+    </div>
+    <hr/>
+    <input type="submit" class="btn btn-primary" ng-click="" value="Save" /><br>
+    User: {{user}} <br>
+    Tags: {{tags}} <br>
+    Ajax food results: <br>
+    Primary Foods: {{primaryFoods}} <br>
+    Secondary Foods: {{secondaryFoods}}<br>
+    Selected Primary food: {{userCategory}}
+    Selected Secondary food: {{userFood}}
+  </form>
+</div>
