@@ -89,22 +89,19 @@ app.directive('tagManager', function() {
   };
 });
 
-
+// watch change of ng-model value over binding event to.
 app.directive('doubleTagManager', function() {
   return {
     restrict: 'E',
     scope: {tags: '=', primary: '=', secondary: '=', userPrimary: '=', userSecondary: '='},
     templateUrl: 'static/js/partials/double-tag-manager.html',
     link: function ($scope, $element) {
-      var input = angular.element($element.find('select')[1])
+      var input = angular.element($element.find('select')[1]);
       // This adds the new tag to the tags array
       $scope.add = function() {
         var new_value = input[0].value;
         if ($scope.tags.indexOf(new_value) < 0) {
-          // console.log('Primary :' + userPrimary); This is throwing a Reference Error
-          // The desired goal is to have it push a string in the format 'userPrimary: userSecondary'
-          // to the tags list.
-          $scope.tags.push(input[0].value);
+          $scope.tags.push($scope.userPrimary.name + ': ' + $scope.userSecondary.name);
         }
       };
       // This is the ng-click handler to remove an item

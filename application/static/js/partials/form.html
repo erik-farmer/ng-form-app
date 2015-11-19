@@ -28,8 +28,9 @@
     <div class="row">
       <div class="col-md-10">
         <label for="uDegree">Select with static</label>
-        <select name="uDegree" id="pets" class="form-control" ng-options="p.name as p.name for p in pets"
-                                                          ng-model="user.pet" required>
+        <select name="uDegree" id="pets" class="form-control"
+                ng-options="p.name as p.name for p in pets"
+                ng-model="user.pet" required>
           <option value="">Select a Pet</option>
         </select>
         <div ng-show="form.$submitted || form.uDegree.$touched">
