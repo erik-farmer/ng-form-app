@@ -10,11 +10,10 @@
   <div class="col-md-6" ng-show="userPrimary">
     <select name="uFoodsSecondary" id="foodSecondary" class="form-control"
             ng-model="userSecondary"
-            ng-options="item.name for item in (secondary | filter: {parent_id: userPrimary.id})
+            ng-options="item.name for item in (secondary | filter: {parent_id: userPrimary.id} | addAll)
             track by item.name"
             required>
       <option value="">Select a Food sub-category!</option>
-      <option value="All Catgories">All Categories</option>
     </select>
   </div>
 </div>

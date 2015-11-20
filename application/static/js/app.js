@@ -81,7 +81,6 @@ app.directive('tagManager', function() {
       $scope.remove = function ( idx ) {
           $scope.tags.splice(idx, 1);
       };
-      // Capture all keypresses
       input.bind( 'change', function ( event ) {
         $scope.$apply($scope.add);
       });
@@ -89,7 +88,6 @@ app.directive('tagManager', function() {
   };
 });
 
-// watch change of ng-model value over binding event to.
 app.directive('doubleTagManager', function() {
   return {
     restrict: 'E',
@@ -99,19 +97,29 @@ app.directive('doubleTagManager', function() {
       var input = angular.element($element.find('select')[1]);
       // This adds the new tag to the tags array
       $scope.add = function() {
-        var new_value = input[0].value;
+        var new_value = $scope.userPrimary.name + ': ' + $scope.userSecondary.name
         if ($scope.tags.indexOf(new_value) < 0) {
-          $scope.tags.push($scope.userPrimary.name + ': ' + $scope.userSecondary.name);
+          $scope.tags.push(new_value);
         }
+        $scope.userSecondary = '';
       };
       // This is the ng-click handler to remove an item
       $scope.remove = function ( idx ) {
           $scope.tags.splice(idx, 1);
       };
-      // Capture all keypresses
-      input.bind( 'change', function ( event ) {
+      input.bind('change', function ( event ) {
         $scope.$apply($scope.add);
       });
     }
+  };
+});
+
+app.filter('addAll', function () {
+  return function(input) {
+    // clone the array, or you'll end up with a new "None" option added to your "values"
+    // array on every digest cycle.
+    var newArray = input.slice(0);
+    newArray.unshift({name: "All Foods"});
+    return newArray;
   };
 });
