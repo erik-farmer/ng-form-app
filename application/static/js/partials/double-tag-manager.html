@@ -20,3 +20,9 @@
 <div class="tags">
   <a ng-repeat="(idx, tag) in tags" class="tag" ng-click="remove(idx)">{{tag}}</a>
 </div>
+<div ng-show="form.$submitted || form.uFoodsPrimary.$touched">
+  <p class="text-danger"
+     ng-show="form.uFoodsPrimary.$error.required">Please select a primary</p>
+  <p class="text-danger"
+     ng-show="form.uFoodsSecondary.$error.required">Please select a secondary category.</p>
+</div>

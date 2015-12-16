@@ -33,8 +33,8 @@
                 ng-model="user.pet" required>
           <option value="">Select a Pet</option>
         </select>
-        <div ng-show="form.$submitted || form.uDegree.$touched">
-          <p class="text-danger" ng-show="form.uDegree.$error.required">Please enter favorite pet type.</p>
+        <div ng-show="form.$submitted || form.uPets.$touched">
+          <p class="text-danger" ng-show="form.uPets.$error.required">Please enter favorite pet type.</p>
         </div><!-- error-msg -->
       </div><!-- col -->
     </div><!-- row -->
@@ -56,11 +56,11 @@
     <hr/>
     <input type="submit" class="btn btn-primary" ng-click="" value="Save" /><br>
     User: {{user}} <br>
-    Tags: {{tags}} <br>
-    Ajax food results: <br>
-    Primary Foods: {{primaryFoods}} <br>
-    Secondary Foods: {{secondaryFoods}}<br>
-    Selected Primary food: {{userCategory}}
-    Selected Secondary food: {{userFood}}
+    Single Tags: {{tags}} <br>
+    Double Tags: {{tags_2}} <br>
+    Form Valid?: {{form.$valid}} <br>
+    Errors: {{form.$error}}<br>
+    <!--Form: {{form}}-->
+
   </form>
 </div>

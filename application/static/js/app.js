@@ -65,10 +65,12 @@ app.controller('formCtrl', function($scope, $http, $routeParams) {
 
 app.directive('tagManager', function() {
   return {
+    require: '^form',
     restrict: 'E',
     scope: {tags: '=', options: '=', selectedPrimary: '='},
     templateUrl: 'static/js/partials/tag-manager.html',
-    link: function ( $scope, $element ) {
+    link: function ($scope, $element, attrs, formCtrl ) {
+      $scope.form = formCtrl;
       var input = angular.element($element.find('select')[0])
       // This adds the new tag to the tags array
       $scope.add = function() {
@@ -90,10 +92,12 @@ app.directive('tagManager', function() {
 
 app.directive('doubleTagManager', function() {
   return {
+    require: '^form',
     restrict: 'E',
     scope: {tags: '=', primary: '=', secondary: '=', userPrimary: '=', userSecondary: '='},
     templateUrl: 'static/js/partials/double-tag-manager.html',
-    link: function ($scope, $element) {
+    link: function ($scope, $element, attrs, formCtrl ) {
+      $scope.form = formCtrl;
       var input = angular.element($element.find('select')[1]);
       // This adds the new tag to the tags array
       $scope.add = function() {

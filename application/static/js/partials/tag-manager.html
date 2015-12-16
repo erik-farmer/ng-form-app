@@ -1,10 +1,11 @@
 <label for="uColors">Select with http single tags</label>
-<select name="uColors" id="uColors" class="form-control" ng-model="selected" ng-options="item.name for item in options track by item.name" required>
+<select name="uColors" id="uColors" class="form-control"
+        ng-model="selected" ng-options="item.name for item in options track by item.name" required>
   <option value="">Select a Color!</option>
 </select>
 <div class="tags">
   <a ng-repeat="(idx, tag) in tags" class="tag" ng-click="remove(idx)">{{tag}}</a>
 </div>
 <div ng-show="form.$submitted || form.uColors.$touched">
-  <p class="text-danger" ng-show="form.uColors.$error.required">Please select a favorite color.</p>
+  <p class="text-danger" ng-show="form.uColors.$error.required">Please select a favorite color!</p>
 </div>
